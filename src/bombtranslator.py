@@ -1,5 +1,5 @@
 import sys, re, time
-import collections, codecs
+import collections, codecs, csv
 
 class Translator:
     def __init__(self):
@@ -12,24 +12,19 @@ class Translator:
         print(len(self.vochb))
     def buildDictionary(self):
         dictname = 'dict.txt'
-        d = codecs.open(dictname, encoding='utf-8')
-        lines = d.readlines()
-        for line in lines:
+        d = codecs.open(dictname, 'r', 'utf-8')
+        for line in d:
             line = line.strip('\n')
-            line = line.split('\t')
-            print(line)
+            line = line.split()
             self.spanishDict[line[0]] = line[1]
-            time.sleep(1)
+
         
             
         
 #i know this is lame...so don't say anything GOD
 if __name__ == '__main__':
     filename = "spanish_text.txt"
-    f = codecs.open(filename, 'r', "utf-8")
+    f = codecs.open(filename, 'r', 'utf-8')
     textfile = f.read()
-    print(textfile)
-    exit(1)
-    
     translator = Translator()
     translator.buildVocab(textfile)

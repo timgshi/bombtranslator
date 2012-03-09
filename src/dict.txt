@@ -1,4 +1,3 @@
-# coding=utf-8
 tras	after
 la	the
 caída	fall
@@ -64,7 +63,6 @@ como as
 materna	maternal
 chino	chinese
 mandarín	mandarin
-es	is
 también also
 oficial	official
 varias	more
@@ -75,7 +73,6 @@ político-económicas	political-economic
 internacionales	international
 lo	it
 hablan	speak
-como	as
 primera	first
 y	and
 más	more
@@ -90,7 +87,6 @@ a	to
 que	that
 han	have
 aprendido	learned
-como	as
 extranjera	foreign
 pudiendo	can
 ser	be

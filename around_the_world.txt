@@ -1,3 +1,4 @@
+# coding=utf-8
 Lo cierto era que desde hacía largos años Phileas Fogg no había dejado Londres. 
 Los que tenían el honor de conocerle más a fondo que los demás, atestiguaban que -excepción hecha del camino diariamente recorrido por él desde su casa al club- nadie podía pretender haberlo visto en otra parte. Era su único pasatiempo leer los periódicos y jugar al whist. 
 Solía ganar a ese silencioso juego, tan apropiado a su natural carácter, pero sus beneficios nunca entraban en su bolsillo, sino que figuraban por una suma respetable en su presupuesto de caridad. 

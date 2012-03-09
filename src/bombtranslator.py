@@ -1,10 +1,11 @@
 import sys, re, time
 import collections, codecs, csv
 
-class Translator:
-    def __init__(self):
-        self.vocab = list()
-        self.spanishDict = {}
+class Word():
+    def __init__(self, pos, spanish, english):
+        self.pos = pos
+        self.spanish = spanish
+        self.english = english
 
 def buildDictionary():
         dict ={}
@@ -13,13 +14,12 @@ def buildDictionary():
         for line in d:
             line = line.strip('\n')
             line = line.split()
-            dict[line[0].lower()] = line[1]
+            dict[line[0].lower()] = [line[1], line[2]]
         return dict
 
-def translate(text, translator):        
-    filename = 'english.txt'
-    f = open(filename, 'w')
-    print('\n')
+def translate(text, dictionary):
+    document = []        
+
     for line in text:
         for word in line.split():
 #            word = word.strip('.,')
@@ -30,14 +30,11 @@ def translate(text, translator):
             elif "," in word:
                 word = word.strip(',')
                 punc = ','
-            if (word.lower() in translator.spanishDict):
-                if len(punc) == 0:
-                    f.write(translator.spanishDict[word.lower()] + " ")
-                else:
-                    f.write(translator.spanishDict[word.lower()] + punc + '\n')
-            else:
-                print("not found" + word)
-    f.close()
+            if (word.lower() in dictionary):
+                document.append(Word(dictionary[word.lower()][0], word.lower(), dictionary[word.lower()][0]))
+                if len(punc) > 0:
+                    document.append(Word('punc', punc, punc))
+    return document
             
         
 #i know this is lame...so don't say anything GOD
@@ -47,11 +44,10 @@ if __name__ == '__main__':
     textfile = []
     for line in f:
         textfile.append(line)
-    translator = Translator()
-    translator.spanishDict = buildDictionary()
+    spanishDict = buildDictionary()
     f.close()
 
     
-    translate(textfile, translator)
+    englishDoc = translate(textfile, spanishDict)
     
     

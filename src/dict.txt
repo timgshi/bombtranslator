@@ -109,3 +109,6 @@ concretamente	specifically	adj
 zona	area	n
 central	central	adj
 hispania	hispania n
+con	with	p
+norte	north	n
+lenguas	languages	n

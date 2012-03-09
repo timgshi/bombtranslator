@@ -13,7 +13,6 @@ def buildDictionary():
         for line in d:
             line = line.strip('\n')
             line = line.split()
-            print(line[0])
             dict[line[0].lower()] = line[1]
         return dict
 
@@ -23,11 +22,21 @@ def translate(text, translator):
     print('\n')
     for line in text:
         for word in line.split():
-            word = word.strip('.,')
+#            word = word.strip('.,')
+            punc = ''
+            if "." in word:
+                word = word.strip('.')
+                punc = '.'
+            elif "," in word:
+                word = word.strip(',')
+                punc = ','
             if (word.lower() in translator.spanishDict):
-                f.write(translator.spanishDict[word.lower()] + " ")
+                if len(punc) == 0:
+                    f.write(translator.spanishDict[word.lower()] + " ")
+                else:
+                    f.write(translator.spanishDict[word.lower()] + punc + '\n')
             else:
-                print('not found' + word)
+                print("not found" + word)
     f.close()
             
         

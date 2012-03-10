@@ -169,6 +169,18 @@ def deal_with_de(english, position):
             english[position+6] = word2
             word2.english = ""
             
+def fix_adjectives(english, position):
+    if ((position + 6) > len(english)-1):
+        return
+    word1 = english[position]
+    word2 = english[position+2]
+    word3 = english[position+4]
+    word4 = english[position+6]
+    if 'N' in word1.pos and 'A' in word2.pos and 'C' in word3.pos and 'A' in word4.pos:
+        english[position] = word2
+        english[position+2] = word3
+        english[position+4] = word4
+        english[position+6] = word1
     
         
 #i know this is lame...so don't say anything GOD
@@ -186,15 +198,24 @@ if __name__ == '__main__':
     
     #build your rules in this iterator
     for index in range(0, len(englishDoc)-1):
-        rule_qs(englishDoc, index)
-#        rule_ms(englishDoc, index)
-        findBeginningSubject(englishDoc, index)
-        rule_reflexive(englishDoc, index)
         to_plus_verb_ending_in_r(englishDoc, index)
         direct_object_verb_flip(englishDoc, index)
-        do_not(englishDoc, index)
         noun_adjective_flip(englishDoc, index)
+        do_not(englishDoc, index)
+        
         adv_v_o(englishDoc, index)
         deal_with_de(englishDoc, index)
+        fix_adjectives(englishDoc, index)
+        rule_qs(englishDoc, index)
+        rule_ms(englishDoc, index)
+        rule_reflexive(englishDoc, index)
+        
+        findBeginningSubject(englishDoc, index)
+        
+        
+        
+        
+        
+        
     for line in englishDoc:
         print(line.english)

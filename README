@@ -10,6 +10,18 @@ F Language: Spanish
 3. Spanish has a multiple forms of past tense that suggest either an action that occurred once or multiple times. Some of these translations are not always fully expressed in English.
 4. In english, adjectives typically appear before a noun but in Spanish, adjectives follow after the noun. For example, idioma español.  
 
+Input:
+El idioma español o castellano es una lengua romance del grupo ibérico. 
+Es uno de los seis idiomas oficiales de la ONU. 
+Es la segunda lengua más hablada del mundo por el número de personas que la tienen como lengua materna, tras el chino mandarín.
+Es también idioma oficial en varias de las principales organizaciones político-económicas internacionales.
+Lo hablan como primera y segunda lengua más de 450 millones, y supera los 500 millones de personas si contamos a los que lo han aprendido como lengua extranjera, pudiendo ser la tercera lengua más hablada por el total de hablantes.
+El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
+La historia del idioma español comienza con el latín vulgar del Imperio romano, concretamente con el de la zona central del norte de Hispania.
+Tras la caída del Imperio romano en el siglo V , la influencia del latín culto en la gente común fue disminuyendo paulatinamente.
+El latín hablado de entonces fue el fermento de las variedades romances hispánicas, origen de la lengua española.
+En el siglo VIII , la invasión musulmana de la Península Ibérica hace que se formen dos zonas bien diferenciadas.
+
 Output: 
 
 Rules:

@@ -198,16 +198,24 @@ if __name__ == '__main__':
     
     #build your rules in this iterator
     for index in range(0, len(englishDoc)-1):
-        rule_qs(englishDoc, index)
-#        rule_ms(englishDoc, index)
-        findBeginningSubject(englishDoc, index)
-        rule_reflexive(englishDoc, index)
         to_plus_verb_ending_in_r(englishDoc, index)
         direct_object_verb_flip(englishDoc, index)
-        do_not(englishDoc, index)
         noun_adjective_flip(englishDoc, index)
+        do_not(englishDoc, index)
+        
         adv_v_o(englishDoc, index)
         deal_with_de(englishDoc, index)
         fix_adjectives(englishDoc, index)
+        rule_qs(englishDoc, index)
+        rule_ms(englishDoc, index)
+        rule_reflexive(englishDoc, index)
+        
+        findBeginningSubject(englishDoc, index)
+        
+        
+        
+        
+        
+        
     for line in englishDoc:
         print(line.english)

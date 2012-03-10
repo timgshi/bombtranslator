@@ -37,9 +37,9 @@ bien	well	adj
 diferenciadas	differentiated	adj
 el	the	a
 idioma	language	n
-español	spanish	n
+español	Spanish	n
 o	or	conj
-castellano	castilian	adj
+castellano	Castilian	adj
 es	is	v
 una	a	a
 lengua	language	n
@@ -61,7 +61,7 @@ número	number	n
 tienen	have	v
 como as	adv
 materna	maternal	adj
-chino	chinese	adj
+chino	Chinese	adj
 mandarín	mandarin n
 también also	adv
 oficial	official	adj
@@ -98,7 +98,6 @@ hablantes	speakers	n
 otras	others	n
 continuación continuation	n
 moderna	modern	adj
-latín latin	adj
 hablado	spoken	v
 desde	from	p
 III	III	num
@@ -108,7 +107,7 @@ vulgar	vulgar	adj
 concretamente	specifically	adj
 zona	area	n
 central	central	adj
-hispania	hispania n
+hispania	Hispanic n
 con	with	p
 norte	north	n
 lenguas	languages	n

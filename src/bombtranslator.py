@@ -7,6 +7,16 @@ class Word():
         self.spanish = spanish
         self.english = english
 
+def buildPOSDict():
+    pos = {}
+    f = open("mobypos.txt", 'r')
+    lines = f.readlines()
+    for line in lines:
+        line = line.strip('\n')
+        line = line.strip('\r')
+        line = line.split('\\')
+        pos[line[0]] = list(line[1])
+    return pos
 def buildDictionary():
         dict ={}
         dictname = 'dict.txt'
@@ -14,10 +24,10 @@ def buildDictionary():
         for line in d:
             line = line.strip('\n')
             line = line.split()
-            dict[line[0].lower()] = [line[1], line[2]]
+            dict[line[0].lower()] = line[1]
         return dict
 
-def translate(text, dictionary):
+def translate(text, dictionary, POSDictionary):
     document = []        
 
     for line in text:
@@ -31,7 +41,8 @@ def translate(text, dictionary):
                 word = word.strip(',')
                 punc = ','
             if (word.lower() in dictionary):
-                document.append(Word(dictionary[word.lower()][0], word.lower(), dictionary[word.lower()][0]))
+                english = dictionary[word.lower()]
+                document.append(Word(POSDictionary[english], word.lower(), english))
                 if len(punc) > 0:
                     document.append(Word('punc', punc, punc))
     return document
@@ -46,8 +57,7 @@ if __name__ == '__main__':
         textfile.append(line)
     spanishDict = buildDictionary()
     f.close()
-
+    posDict = buildPOSDict()
     
-    englishDoc = translate(textfile, spanishDict)
-    
+    englishDoc = translate(textfile, spanishDict, posDict)
     

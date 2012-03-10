@@ -151,7 +151,7 @@ def deal_with_de(english, position):
     word1 = english[position]
     word2 = english[position+2]
     word3 = english[position+4]
-    if word2.spanish == 'de':
+    if word2.spanish != 'de':
         return
     if 'N' in word1.pos and 'N' in word3.pos:
         if ((position + 6) > len(english)-1):

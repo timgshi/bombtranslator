@@ -100,7 +100,39 @@ def rule_reflexive(english, pos):
                 print('found', word1.english, word2.english, word3.english)
                 englishDoc[pos+2].english = ""
                 englishDoc[pos+3].english = ""
-    
+def to_plus_verb_ending_in_r(english, position) :
+    currentWord = english[position]
+    if currentWord.pos == 'V':
+        if currentWord[-1] == 'r':
+            currentWord = "to " + currentWord
+            english[position] = currentWord
+
+def noun_adjective_flip(english, position):
+    noun = english[position]
+    if position < (len(english) - 1):
+        adjective = english[position + 1]
+        if noun.pos == 'N' and adjective.pos == 'A':
+            english[position] = adjective
+            english[position + 1] = noun
+            
+def do_not(english, position):
+    no = english[position]
+    if no == "no":
+        if position < (len(english) - 1):
+            if english[position + 1].pos == 'V':
+                no = "do " + no + "t"
+                english[position] = no
+                
+def direct_object_verb_flip(english, position):
+    subject = english[position]
+    if subject.pos == 'N':
+        if position < (len(english) - 2):
+            direct_object = english[position + 1]
+            verb = english[position + 2]
+            if direct_object == "lo" and verb.pos == 'V':
+                english[position + 1] = verb
+                english[position + 2] = direct_object
+                
         
 #i know this is lame...so don't say anything GOD
 if __name__ == '__main__':
@@ -121,6 +153,10 @@ if __name__ == '__main__':
 #        rule_ms(englishDoc, index)
         findBeginningSubject(englishDoc, index)
         rule_reflexive(englishDoc, index)
+        to_plus_verb_ending_in_r(englishDoc, index)
+        direct_object_verb_flip(englishDoc, index)
+        do_not(englishDoc, index)
+        noun_adjective_flip(englishDoc, index)
         
     for line in englishDoc:
         print(line.english)

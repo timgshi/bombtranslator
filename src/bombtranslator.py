@@ -46,7 +46,16 @@ def translate(text, dictionary, POSDictionary):
                 if len(punc) > 0:
                     document.append(Word('punc', punc, punc))
     return document
-            
+
+#rule 8
+def rule_qs(english, pos):
+    if ((pos+2) > len(english)-1): 
+        return
+    word1 = english[pos]
+    word2 = english[pos+2]
+    if ("i" in word1.pos) and ("N" in word2.pos or "r" in word2.pos):
+        english[pos] = word2
+        english[pos+2] = word1
         
 #i know this is lame...so don't say anything GOD
 if __name__ == '__main__':
@@ -60,4 +69,11 @@ if __name__ == '__main__':
     posDict = buildPOSDict()
     
     englishDoc = translate(textfile, spanishDict, posDict)
+    
+    #build your rules in this iterator
+    for index in range(0, len(englishDoc)-1):
+        rule_qs(englishDoc, index)
+        
+    for line in englishDoc:
+        print(line.english)
     

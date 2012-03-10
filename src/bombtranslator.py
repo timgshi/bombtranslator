@@ -65,13 +65,14 @@ def findSubject(word):
 
 #rule 8
 def rule_qs(english, pos):
-    if ((pos+2) > len(english)-1): 
+    if ((pos+1) > len(english)-1): 
         return
     word1 = english[pos]
-    word2 = english[pos+2]
+    word2 = english[pos+1]
     if ("i" in word1.pos) and ("N" in word2.pos or "r" in word2.pos):
         english[pos] = word2
-        english[pos+2] = word1
+        english[pos+1] = word1
+        print(word1.english, word2.english)
 
 def rule_ms(english, pos):
     if (pos < 2): return
@@ -100,7 +101,7 @@ def rule_reflexive(english, pos):
             if 'V' in word3.pos or 't' in word3.pos or 'i' in word3.pos:
                 print('found', word1.english, word2.english, word3.english)
                 englishDoc[pos+2].english = ""
-                englishDoc[pos+3].english = ""
+                englishDoc[pos+4].english = ""
 
 def to_plus_verb_ending_in_r(english, position) :
     currentWord = english[position]

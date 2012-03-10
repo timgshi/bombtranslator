@@ -3,3 +3,44 @@ CS124 Final Assignment
 Tim Shi
 Chloe Yeung
 Victoria Kwong
+
+F Language: Spanish
+1. One of the differences between Spanish and English is that Spanish sentences may start with a subjectless sentence. For example, Es una muter. The sentence requires context from previous sentence(s) to determine the subject of the sentence. 
+2. Spanish has strong rules with regards to how verbs are conjugated. 
+3. Spanish has a multiple forms of past tense that suggest either an action that occurred once or multiple times. Some of these translations are not always fully expressed in English.
+4. In english, adjectives typically appear before a noun but in Spanish, adjectives follow after the noun. For example, idioma español.  
+
+Output: 
+
+Rules:
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 
+9. Rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb.
+10.
+
+Error analysis:
+
+Google Translate:
+Spanish or Castilian is an Iberian Romance language group.
+It is one of the six official UN languages​​.
+It is the second most spoken language in the world by the number of people who are native speakers, after Mandarin Chinese.
+It is also an official language in several major international political and economic organizations.
+It is spoken as a first and second language more than 450 million and more than 500 million people if you count those who have learned as a foreign language can be the third most spoken language by total speakers.
+The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century.
+The story begins with the Spanish language Vulgar Latin of the Roman Empire, specifically that of the central part of northern Spain.
+After the fall of the Roman Empire in the V century, the influence of Latin worship in the common people was gradually diminishing.
+The spoken Latin of that time was the ferment of Hispanic Romance varieties, of Spanish origin.
+In the eighth century, the Muslim invasion of the Iberian Peninsula makes the formation of two distinct areas.
+
+Analysis:
+
+Members:
+Chloe build the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 
+Chloe, Tim, and Victoria each took 3-4 sentences of the spanish file and translated the words, storing it into dict.txt.
+Victoria wrote rules 1-4, Tim 5-7, and Chloe 8-10.

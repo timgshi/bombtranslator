@@ -29,7 +29,7 @@ Rules:
 2.
 3.
 4.
-5.
+5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found two positions after a verb adjusted to swap positions with the verb.
 6.
 7.
 8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 

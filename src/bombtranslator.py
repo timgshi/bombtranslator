@@ -169,6 +169,18 @@ def deal_with_de(english, position):
             english[position+6] = word2
             word2.english = ""
             
+def fix_adjectives(english, position):
+    if ((position + 6) > len(english)-1):
+        return
+    word1 = english[position]
+    word2 = english[position+2]
+    word3 = english[position+4]
+    word4 = english[position+6]
+    if 'N' in word1.pos and 'A' in word2.pos and 'C' in word3.pos and 'A' in word4.pos:
+        english[position] = word2
+        english[position+2] = word3
+        english[position+4] = word4
+        english[position+6] = word1
     
         
 #i know this is lame...so don't say anything GOD
@@ -196,5 +208,6 @@ if __name__ == '__main__':
         noun_adjective_flip(englishDoc, index)
         adv_v_o(englishDoc, index)
         deal_with_de(englishDoc, index)
+        fix_adjectives(englishDoc, index)
     for line in englishDoc:
         print(line.english)

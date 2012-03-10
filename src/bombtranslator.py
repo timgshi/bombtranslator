@@ -106,7 +106,7 @@ def rule_reflexive(english, pos):
 def to_plus_verb_ending_in_r(english, position) :
     currentWord = english[position]
     if 'V' in currentWord.pos:
-        if currentWord.english[-1] == 'r':
+        if len(currentWord.english) > 0 and currentWord.english[-1] == 'r':
             currentWord.english = "to " + str(currentWord.english)
             english[position] = currentWord
 
@@ -145,8 +145,30 @@ def adv_v_o(english, position):
         english[position] = word2
         english[position+2] = word1
         
-#def deal_with_de(english, position):
-    
+def deal_with_de(english, position):
+    if ((position + 4) > len(english)-1):
+        return
+    word1 = english[position]
+    word2 = english[position+2]
+    word3 = english[position+4]
+    if word2.spanish == 'de':
+        return
+    if 'N' in word1.pos and 'N' in word3.pos:
+        if ((position + 6) > len(english)-1):
+            english[position] = word3
+            english[position+2] = word1
+            english[position+4] = word2
+            word2.english = ""
+            english[position+3].english = ""
+            return
+        word4 = english[position+6]
+        if 'N' in word4.pos or 'A' in word4.pos:
+            english[position] = word3
+            english[position+2] = word4
+            english[position+4] = word1
+            english[position+6] = word2
+            word2.english = ""
+            
     
         
 #i know this is lame...so don't say anything GOD
@@ -173,6 +195,6 @@ if __name__ == '__main__':
         do_not(englishDoc, index)
         noun_adjective_flip(englishDoc, index)
         adv_v_o(englishDoc, index)
-        
+        deal_with_de(englishDoc, index)
     for line in englishDoc:
         print(line.english)

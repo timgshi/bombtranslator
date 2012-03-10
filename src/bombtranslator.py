@@ -72,6 +72,7 @@ def rule_qs(english, pos):
     if ("i" in word1.pos) and ("N" in word2.pos or "r" in word2.pos):
         english[pos] = word2
         english[pos+2] = word1
+
 def rule_ms(english, pos):
     if (pos < 2): return
     word1 = english[pos-2]
@@ -100,36 +101,37 @@ def rule_reflexive(english, pos):
                 print('found', word1.english, word2.english, word3.english)
                 englishDoc[pos+2].english = ""
                 englishDoc[pos+3].english = ""
+
 def to_plus_verb_ending_in_r(english, position) :
     currentWord = english[position]
-    if currentWord.pos == 'V':
-        if currentWord[-1] == 'r':
-            currentWord = "to " + currentWord
+    if 'V' in currentWord.pos:
+        if currentWord.english[-1] == 'r':
+            currentWord.english = "to " + str(currentWord.english)
             english[position] = currentWord
 
 def noun_adjective_flip(english, position):
     noun = english[position]
     if position < (len(english) - 1):
         adjective = english[position + 1]
-        if noun.pos == 'N' and adjective.pos == 'A':
+        if 'N' in english[position].pos and 'A' in english[position + 1].pos:
             english[position] = adjective
             english[position + 1] = noun
             
 def do_not(english, position):
     no = english[position]
-    if no == "no":
+    if no.english == "no":
         if position < (len(english) - 1):
-            if english[position + 1].pos == 'V':
-                no = "do " + no + "t"
+            if 'V' in english[position + 1].pos:
+                no.english = "do " + str(no.english) + "t"
                 english[position] = no
                 
 def direct_object_verb_flip(english, position):
     subject = english[position]
-    if subject.pos == 'N':
+    if 'N' in subject.pos:
         if position < (len(english) - 2):
             direct_object = english[position + 1]
             verb = english[position + 2]
-            if direct_object == "lo" and verb.pos == 'V':
+            if direct_object.spanish == "lo" and 'V' in verb.pos:
                 english[position + 1] = verb
                 english[position + 2] = direct_object
                 
@@ -160,4 +162,3 @@ if __name__ == '__main__':
         
     for line in englishDoc:
         print(line.english)
-    

@@ -49,12 +49,18 @@ def translate(text, dictionary, POSDictionary):
 
 def findSubject(word):
     verb = word+' '
-    if re.match("([ae]s)", verb): return 'It'
-    if re.match(u'\w+o', verb): return 'I'
-    if re.match('\w+[ae]', verb): return "It"
-    if re.match('\w+[ae]s', verb): return 'You'
-    if re.match('\w+[ae]mos', verb): return 'We'
-    if re.match('\w+[ae]n', verb): return "They"
+    if re.match("[ae]s ", verb): return 'It'
+    if re.match(u'\w+o ', verb): return 'I'
+    if re.match('\w+[ae] ', verb): return "It"
+    if re.match('\w+[ae]s ', verb): return 'You'
+    if re.match('\w+[ae]mos ', verb): return 'We'
+    if re.match('\w+[ae]n ', verb): return "They"
+    
+    if re.match('\w+[ai]ste ', verb): return "You"
+    if re.match('\w+[ai]mos', verb): return "We"
+    if re.match('\w+[ai]steis ', verb): return "You"
+    if re.match('\w+(a|ie)ron ',verb): return "They"
+    
     return ''
 
 #rule 8
@@ -72,9 +78,7 @@ def rule_ms(english, pos):
     if 'N' in word1.pos: return
     word2 = english[pos]
     if 'V' in word2.pos or 't' in word2.pos or 'i' in word2.pos:
-        print(word1.spanish, englishDoc[pos-1].spanish, word2.spanish)
         english[pos-2].english = findSubject(word1.spanish) + ' ' + word1.english
-        print(english[pos-2].english)
 def findBeginningSubject(english, pos):
     if (pos == 0): 
         if 'V' in english[0].pos or 't' in english[0].pos or 'i' in english[0].pos:

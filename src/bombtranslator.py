@@ -92,7 +92,7 @@ def findBeginningSubject(english, pos):
         if 'punc' in word1.pos:
             english[pos].english = findSubject(word2.spanish) + ' ' + word2.english
 def rule_reflexive(english, pos):
-    if (pos+4 > len(english)-1): return
+    if (pos+ > len(english)-1): return
     word1 = english[pos]
     word2 = english[pos+2]
     word3 = english[pos+4]

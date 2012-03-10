@@ -14512,7 +14512,7 @@ Aërope\N
 aîné\A
 Aïda\N
 Aïr\N
-a\DNVP
+a\DNP
 A\N
 B battery\h
 B complex\h

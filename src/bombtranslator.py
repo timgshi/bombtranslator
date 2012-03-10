@@ -56,6 +56,25 @@ def rule_qs(english, pos):
     if ("i" in word1.pos) and ("N" in word2.pos or "r" in word2.pos):
         english[pos] = word2
         english[pos+2] = word1
+def rule_ms(english, pos):
+    if (pos < 2): return
+    word1 = english[pos-2]
+    if 'N' in word1.pos: return
+    word2 = english[pos]
+    if 'V' in word2.pos or 't' in word2.pos or 'i' in word2.pos:
+        print(word1.spanish, englishDoc[pos-1].spanish, word2.spanish)
+def rule_reflexive(english, pos):
+    if (pos+4 > len(english)-1): return
+    word1 = english[pos]
+    word2 = english[pos+2]
+    word3 = english[pos+4]
+    if ('N' in word1.pos or 'r' in word1.pos):
+        if (re.match("(me|te|nos|os|se)", word2.spanish)):
+            if 'V' in word3.pos or 't' in word3.pos or 'i' in word3.pos:
+                print('found', word1.english, word2.english, word3.english)
+                englishDoc[pos+2].english = ""
+                englishDoc[pos+3].english = ""
+    
         
 #i know this is lame...so don't say anything GOD
 if __name__ == '__main__':
@@ -73,6 +92,8 @@ if __name__ == '__main__':
     #build your rules in this iterator
     for index in range(0, len(englishDoc)-1):
         rule_qs(englishDoc, index)
+#        rule_ms(englishDoc, index)
+        rule_reflexive(englishDoc, index)
         
     for line in englishDoc:
         print(line.english)

@@ -136,6 +136,18 @@ def direct_object_verb_flip(english, position):
                 english[position + 1] = verb
                 english[position + 2] = direct_object
                 
+def adv_v_o(english, position):
+    if ((position+2) > len(english)-1): 
+        return
+    word1 = english[position]
+    word2 = english[position + 2]
+    if 'V' in word1.pos and 'v' in word2.pos:
+        english[position] = word2
+        english[position+2] = word1
+        
+#def deal_with_de(english, position):
+    
+    
         
 #i know this is lame...so don't say anything GOD
 if __name__ == '__main__':
@@ -160,6 +172,7 @@ if __name__ == '__main__':
         direct_object_verb_flip(englishDoc, index)
         do_not(englishDoc, index)
         noun_adjective_flip(englishDoc, index)
+        adv_v_o(englishDoc, index)
         
     for line in englishDoc:
         print(line.english)

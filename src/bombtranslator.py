@@ -47,6 +47,16 @@ def translate(text, dictionary, POSDictionary):
                     document.append(Word('punc', punc, punc))
     return document
 
+def findSubject(word):
+    verb = word+' '
+    if re.match("([ae]s)", verb): return 'It'
+    if re.match(u'\w+o', verb): return 'I'
+    if re.match('\w+[ae]', verb): return "It"
+    if re.match('\w+[ae]s', verb): return 'You'
+    if re.match('\w+[ae]mos', verb): return 'We'
+    if re.match('\w+[ae]n', verb): return "They"
+    return ''
+
 #rule 8
 def rule_qs(english, pos):
     if ((pos+2) > len(english)-1): 
@@ -63,6 +73,18 @@ def rule_ms(english, pos):
     word2 = english[pos]
     if 'V' in word2.pos or 't' in word2.pos or 'i' in word2.pos:
         print(word1.spanish, englishDoc[pos-1].spanish, word2.spanish)
+        english[pos-2].english = findSubject(word1.spanish) + ' ' + word1.english
+        print(english[pos-2].english)
+def findBeginningSubject(english, pos):
+    if (pos == 0): 
+        if 'V' in english[0].pos or 't' in english[0].pos or 'i' in english[0].pos:
+            english[0].english = findSubject(english[0].spanish) + ' ' + english[0].english
+        return
+    word1 = english[pos-1]
+    word2 = english[pos]
+    if 'V' in word2.pos or 't' in word2.pos or 'i' in word2.pos:
+        if 'punc' in word1.pos:
+            english[pos].english = findSubject(word2.spanish) + ' ' + word2.english
 def rule_reflexive(english, pos):
     if (pos+4 > len(english)-1): return
     word1 = english[pos]
@@ -93,6 +115,7 @@ if __name__ == '__main__':
     for index in range(0, len(englishDoc)-1):
         rule_qs(englishDoc, index)
 #        rule_ms(englishDoc, index)
+        findBeginningSubject(englishDoc, index)
         rule_reflexive(englishDoc, index)
         
     for line in englishDoc:

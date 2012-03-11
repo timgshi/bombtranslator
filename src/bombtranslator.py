@@ -92,16 +92,14 @@ def findBeginningSubject(english, pos):
         if 'punc' in word1.pos:
             english[pos].english = findSubject(word2.spanish) + ' ' + word2.english
 def rule_reflexive(english, pos):
-    if (pos+4 > len(english)-1): return
+    if (pos+2 > len(english)-1): return
     word1 = english[pos]
-    word2 = english[pos+2]
-    word3 = english[pos+4]
+    word2 = english[pos+1]
+    word3 = english[pos+2]
     if ('N' in word1.pos or 'r' in word1.pos):
         if (re.match("(me|te|nos|os|se)", word2.spanish)):
             if 'V' in word3.pos or 't' in word3.pos or 'i' in word3.pos:
-                print('found', word1.english, word2.english, word3.english)
-                englishDoc[pos+2].english = ""
-                englishDoc[pos+4].english = ""
+                englishDoc[pos+1].english = ""
 
 def to_plus_verb_ending_in_r(english, position) :
     currentWord = english[position]

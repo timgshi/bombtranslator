@@ -29,9 +29,9 @@ Rules:
 2.
 3.
 4.
-5.
-6.
-7.
+5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found two positions after a verb adjusted to swap positions with the verb.
+6. Swaps the order of words around the Spanish "de." In Spanish the possessive object comes before the subject and the order needs to be swapped to match the ordering of English. If the noun after the "de" is also followed by either a noun or adjective, both the third and fourth words are moved to be in front of the "de."
+7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. 
 8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 
 9. Rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb.
 10.
@@ -53,6 +53,6 @@ In the eighth century, the Muslim invasion of the Iberian Peninsula makes the fo
 Analysis:
 
 Members:
-Chloe build the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 
+Chloe built the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 
 Chloe, Tim, and Victoria each took 3-4 sentences of the spanish file and translated the words, storing it into dict.txt.
 Victoria wrote rules 1-4, Tim 5-7, and Chloe 8-10.

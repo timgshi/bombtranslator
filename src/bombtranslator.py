@@ -137,50 +137,52 @@ def direct_object_verb_flip(english, position):
                 english[position + 2] = direct_object
                 
 def adv_v_o(english, position):
-    if ((position+2) > len(english)-1): 
+    if ((position+1) > len(english)-1): 
         return
     word1 = english[position]
-    word2 = english[position + 2]
+    word2 = english[position + 1]
     if 'V' in word1.pos and 'v' in word2.pos:
         english[position] = word2
-        english[position+2] = word1
+        english[position+1] = word1
         
 def deal_with_de(english, position):
-    if ((position + 4) > len(english)-1):
+    if ((position + 2) > len(english)-1):
         return
     word1 = english[position]
-    word2 = english[position+2]
-    word3 = english[position+4]
-    if word2.spanish == 'de':
+    word2 = english[position+1]
+    word3 = english[position+2]
+    if word2.spanish != 'de':
         return
     if 'N' in word1.pos and 'N' in word3.pos:
-        if ((position + 6) > len(english)-1):
-            english[position] = word3
-            english[position+2] = word1
-            english[position+4] = word2
-            word2.english = ""
-            english[position+3].english = ""
+        if ((position + 3) < len(english)-1):
+            word4 = english[position+3]
+            if 'N' in word4.pos or 'A' in word4.pos:
+                english[position] = word3
+                english[position+1] = word4
+                english[position+2] = word1
+                english[position+3] = word2
+                word2.english = ""
+                return
             return
-        word4 = english[position+6]
-        if 'N' in word4.pos or 'A' in word4.pos:
-            english[position] = word3
-            english[position+2] = word4
-            english[position+4] = word1
-            english[position+6] = word2
-            word2.english = ""
+        english[position] = word3
+        english[position+1] = word1
+        english[position+2] = word2
+        word2.english = ""
+       
+        
             
 def fix_adjectives(english, position):
-    if ((position + 6) > len(english)-1):
+    if ((position + 3) > len(english)-1):
         return
     word1 = english[position]
-    word2 = english[position+2]
-    word3 = english[position+4]
-    word4 = english[position+6]
+    word2 = english[position+1]
+    word3 = english[position+2]
+    word4 = english[position+3]
     if 'N' in word1.pos and 'A' in word2.pos and 'C' in word3.pos and 'A' in word4.pos:
         english[position] = word2
-        english[position+2] = word3
-        english[position+4] = word4
-        english[position+6] = word1
+        english[position+1] = word3
+        english[position+2] = word4
+        english[position+3] = word1
     
         
 #i know this is lame...so don't say anything GOD

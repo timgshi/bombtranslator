@@ -5,10 +5,10 @@ Chloe Yeung
 Victoria Kwong
 
 F Language: Spanish
-1. One of the differences between Spanish and English is that Spanish sentences may start with a subjectless sentence. For example, Es una muter. The sentence requires context from previous sentence(s) to determine the subject of the sentence. 
-2. Spanish has strong rules with regards to how verbs are conjugated. 
+1. One of the differences between Spanish and English is that Spanish sentences may start with a subjectless sentence. For example, Es una mujer. The sentence requires context from previous sentence(s) to determine the subject of the sentence. 
+2. Spanish has strong rules with regards to how verbs are conjugated. In other words, the conjugation for I, you, he/she/it, we, and they are all different. Moreover, even different tenses (ie. past, present, preterite, imperfect, future, conditional, etc.) all have different conjugations.
 3. Spanish has a multiple forms of past tense that suggest either an action that occurred once or multiple times. Some of these translations are not always fully expressed in English.
-4. In english, adjectives typically appear before a noun but in Spanish, adjectives follow after the noun. For example, idioma español.  
+4. In English, adjectives typically appear before a noun but in Spanish, adjectives follow after the noun. For example, idioma español.  
 
 Input:
 El idioma español o castellano es una lengua romance del grupo ibérico. 
@@ -44,8 +44,8 @@ Rules:
 5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found after a verb adjusted to swap positions with the verb. Example corrió rápidamente is adjusted to translate to ran quickly.
 6. This rule takes care of irregularities between sentences that use "de" in Spanish and their English counterparts. Sentences are reordered to make sense in English and the "de" is removed when we find nouns or noun phrases wrapped around a "de." For example "hablado de entonces" is rearranged to "then discussed."
 7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. This fixes sentences like "muchacho blanco y rubio" to "white and blond man."
-8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 
-9. Rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb.
+8. This rule looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow English grammar of passive voice. 
+9. This ninth rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb. It is very common in Spanish for the subject to be left out when it is implied. For example, “Está aquí” is a perfectly legitimate sentence. However the direct translation to English “Is here” would be considered a fragment and we need to correct it to “It is here.”
 10. This final rule deals with the reflexive verb in Spanish. Unlike English, Spanish contains a whole subset of verbs whose unconjugated form is “verb+se” (ie. lavarse = to wash oneself, ducharse = to shower oneself, etc). For example, we would say “Yo me llamo Joey.” Directly translated to English, this would be “I I am called Joey”. However, normal English sentences do not contain the second “I”. Instead, the reflexive part is usually implicit. Thus our English translation should be simply “I am called Joey.” This rule then ignores the reflexive pronoun and simply skips the translation of that word.
 
 Error analysis:
@@ -58,7 +58,7 @@ This sentence is missing a subject at the beginning of the sentence. The issue t
 El idioma español o castellano es una lengua romance del grupo ibérico.
 The Spanish or Castilian language is a [language romance] of Iberian group.
 
-Our translation did not catch that this phrase should actually be "romance language". However, it did switch "Iberian group." 
+Our translation did not catch that this phrase should actually be "romance language". This is due to the fact that the part of speech tagger did not tag “romance” as an adjective and only tagged it as a noun. If, however, the Spanish phrase was “una lengua Romance”, then the phrase would have been translated correctly to “a Romance language” because Romance with a capital “R” is tagged as an adjective. Notice that our rules did switch “grupo ibérico" to “Iberian group" as “ibérico” is labeled as an adjective.  
 
 3. Extra Subject
 Es la segunda lengua más hablada del mundo por el número de personas que la tienen como lengua materna, tras el chino mandarín.
@@ -72,7 +72,7 @@ El español, como las otras lenguas romances , es una continuación moderna del 
 
 The Spanish, as the [others languages romances] is a modern continuation of spoken Latin, from the century III.
 
-In English, the word "other" is only pluralized when not followed by another noun. The correct sentence should have "other languages." To fix this issue, we could write a rule checking for the word "other" and making sure that it's pluraility matches the rules of English. 
+In English, the word "other" is only pluralized when not followed by another noun. The correct sentence should have "other languages." To fix this issue, we could write a rule checking for the word "other" and making sure that its plurality matches the rules of English. 
 
 
 
@@ -93,17 +93,41 @@ Google Analysis:
 Es la segunda lengua más hablada del mundo por el número de personas que la tienen como lengua materna, tras el chino mandarín.
 It is the second most spoken language in the world by the number of people who are native speakers, after Mandarin Chinese.
 
-The sentence structure of the placement of "by the number…speakers" makes the English translation difficult to comprehend upon first read. While the meaning can be deciphered, ie. it makes some sense, the sentence is not well structured. It appears, when comparing it to the original Spanish sentence, that Google directly translated this sentence as there appears no way to correctly rearrange the sentence without rearranging all of the sentence structure. (Ie. By the number of people who are native speakers, Spanish is the second most spoken language, after Mandarin, in the world.  
+The sentence structure of the placement of "by the number…speakers" makes the English translation difficult to comprehend upon first reading it. While the meaning can be deciphered, the sentence is not well structured. It appears, when comparing it to the original Spanish sentence, that Google directly translated this sentence as there appears no way to correctly rearrange the sentence without rearranging all of the sentence structure. (ie. By the number of people who are native speakers, Spanish is the second most spoken language, after Mandarin, in the world.) 
 
 2. Extra Article
 El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
 
-The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century.
+The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century. 
 
 This sentence contains an unnecessary article before the subject "Spanish" in "The Spanish." This is a difficult problem because Spanish can refer to both the language and the people. When referring to the Spaniards, Spanish should have a "The" before it. This could be improved by recognizing that the original "Español" refers to the language and ensuring that it is not preceded by an article.
 
-Members:
-Chloe built the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 
-Chloe, Tim, and Victoria each took 3-4 sentences of the spanish file and translated the words, storing it into dict.txt.
-Victoria wrote rules 1-4, Tim 5-7, and Chloe 8-10.
 
+
+Google Translate vs Our Translation
+1. Adjectives
+Spanish: El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
+Google: The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century. 
+Ours: The Spanish, as the others languages romances is a modern continuation of spoken Latin, from the century III.
+
+While Google recognizes the plural forms, “romances” and “otras”, as adjectives, our translation reads them as nouns. Our algorithm did not account for multiple versions of adjectives because in English, we use the same adjective for all nouns. Similarly, our translation did not handle cardinality of numbers. We simply stuck in “III” for “III” while Google translated it to “third.” This is a fault of our dictionary because we paired “III” with “III” and did not bother to change it to a word instead.
+
+2. Articles 
+Spanish: El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
+Google: The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century. 
+Ours: The Spanish, as the others languages romances is a modern continuation of spoken Latin, from the century III.
+
+Both Google and our algorithm added “The” in front of Spanish. Our algorithm simply did a direct translation and thus, when it saw “El” in the original Spanish document, it inserted a “The” in its place. However, while we insert “the” for “las” later in the sentence, Google seems to recognize that “the” in unnecessary. 
+
+
+3. Multiple Definitions
+Spanish: Es la segunda lengua más hablada del mundo por el número de personas que la tienen como lengua materna, tras el chino mandarín.
+Google: It is the second most spoken language in the world by the number of people who are native speakers, after Mandarin Chinese.
+Ours: The second is language more spoken of world by the to number of people that the have as maternal language, after the Chinese mandarin.
+
+Google recognizes that “más” has multiple definitions depending on what it is modifying. Thus it successfully translates “más” to “most.” However, our dictionary only has one translation for “más” and it is “more”. If we were to keep track of several possible English translations for one Spanish word, we would have possibly detected that it should be “most” in this example.
+
+Members:
+Chloe built the starter code that reads a Spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each Spanish word in the file and stores the English translation. Finally, it will iterate through the Spanish file and store an array with each element being of a class Word which stores the Spanish word, English word, and the part of speech array. 
+Chloe, Tim, and Victoria each took 3-4 sentences of the Spanish file and translated the words, storing it into dict.txt.
+For both the code and the paper portion, Victoria wrote rules 1-4, Tim 5-7, and Chloe 8-10.

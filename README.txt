@@ -65,8 +65,14 @@ Es la segunda lengua más hablada del mundo por el número de personas que la ti
 
 [It the] second is language more spoken of world by the to number of people It that the have as maternal language, after the Chinese mandarin.
 
-This sentence has extra subjects placed before articles. Our algorithm looks for verbs and inserts subjects if they're missing according to the tense of the verb. If however there is an article that preceeds the verb, the additional subject is added before the article "It the."
+This sentence has extra subjects placed before articles. Our algorithm looks for verbs and inserts subjects if they're missing according to the tense of the verb. If however there is an article that preceeds the verb, the additional subject is added before the article "It the." We could improve upon this error by checking for articles and not inserting prounouns as the subject when appropriate.
 
+4. Plural disagreement
+El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
+
+The Spanish, as the [others languages romances] is a modern continuation of spoken Latin, from the century III.
+
+In English, the word "other" is only pluralized when not followed by another noun. The correct sentence should have "other languages." To fix this issue, we could write a rule checking for the word "other" and making sure that it's pluraility matches the rules of English. 
 
 
 

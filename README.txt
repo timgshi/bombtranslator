@@ -37,10 +37,10 @@ In the century VIII the Muslim invasion of the Iberian peninsula ago that is for
 
 
 Rules:
-1.
-2.
-3.
-4.
+1. This first rule looks for a noun and an adjective modifying the noun. In English, modifiers are always placed in front of the noun it is describing. For example, we would say “the pretty woman” in English. However, in Spanish, the adjective usually goes after the noun it is modifying. In our example, “the pretty woman” would be “la mujer bonita” in Spanish.
+2. This second rule looks for a verb and more specifically one that ends in “r” in Spanish. The unconjugated form of a Spanish verb always ends in “ar”, “er”, or “ir”. This unconjugated form is English equivalent of the infinitive. For example, we would say in Spanish “Me gusta beber Diet Coke.” Directly translated to English, this would be “I like drink Diet Coke.” However, this obviously is not a grammatically correct sentence. Thus we must isolate all these instances of verbs ending in “r” in Spanish and after translating it to English, add “to” in front of the verb. Thus the correct form of our example would be “I like to drink Diet Coke.”
+3. This third rule looks for the word “no” in front of a verb in Spanish. The addition of the word “no” to a verb serves to negate the verb. For example, to negate the phrase “Tengo dinero”, we would simply say “No tengo dinero.” Directly translated to English, “Tengo dinero” becomes “I have money” and “No tengo dinero” becomes “I no have money.” Unfortunately, the negated version in English is not grammatically correct. Instead, what we want to say is “I do not have money”. Thus our third rule seeks to find all the verb phrases in Spanish that are “no + verb” and turn them into “do not + verb.”
+4. This fourth rule deals with direct objects. In English, all of our sentences follow the structure “subject verb directObject”. For example, we would say “I ate it.” However in Spanish, whenever the direct object becomes generalized to a direct object pronoun such as “lo”, the sentence structure is altered. In Spanish, the order becomes “subject directObject verb”. Thus “I ate it” in Spanish becomes “Me lo comí” in order for us to be grammatically correct. 
 5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found after a verb adjusted to swap positions with the verb. Example corrió rápidamente is adjusted to translate to ran quickly.
 6. This rule takes care of irregularities between sentences that use "de" in Spanish and their English counterparts. Sentences are reordered to make sense in English and the "de" is removed when we find nouns or noun phrases wrapped around a "de." For example "hablado de entonces" is rearranged to "then discussed."
 7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. This fixes sentences like "muchacho blanco y rubio" to "white and blond man."

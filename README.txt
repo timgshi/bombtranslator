@@ -37,16 +37,16 @@ In the century VIII the Muslim invasion of the Iberian peninsula ago that is for
 
 
 Rules:
-1. This first rule looks for a noun and an adjective modifying the noun. In English, modifiers are always placed in front of the noun it is describing. For example, we would say “the pretty woman” in English. However, in Spanish, the adjective usually goes after the noun it is modifying. In our example, “the pretty woman” would be “la mujer bonita” in Spanish.
+1. This first rule looks for a noun and an adjective modifying the noun. In English, modifiers are always placed in front of the noun it is describing. For example, we would say “the pretty woman” in English. However, in Spanish, the adjective usually goes after the noun it is modifying. In our example, “the pretty woman” would be “la mujer bonita” in Spanish. Thus our rule sees the pattern “noun adjective” in Spanish and then flips the position of these two words for the English translation.
 2. This second rule looks for a verb and more specifically one that ends in “r” in Spanish. The unconjugated form of a Spanish verb always ends in “ar”, “er”, or “ir”. This unconjugated form is English equivalent of the infinitive. For example, we would say in Spanish “Me gusta beber Diet Coke.” Directly translated to English, this would be “I like drink Diet Coke.” However, this obviously is not a grammatically correct sentence. Thus we must isolate all these instances of verbs ending in “r” in Spanish and after translating it to English, add “to” in front of the verb. Thus the correct form of our example would be “I like to drink Diet Coke.”
 3. This third rule looks for the word “no” in front of a verb in Spanish. The addition of the word “no” to a verb serves to negate the verb. For example, to negate the phrase “Tengo dinero”, we would simply say “No tengo dinero.” Directly translated to English, “Tengo dinero” becomes “I have money” and “No tengo dinero” becomes “I no have money.” Unfortunately, the negated version in English is not grammatically correct. Instead, what we want to say is “I do not have money”. Thus our third rule seeks to find all the verb phrases in Spanish that are “no + verb” and turn them into “do not + verb.”
-4. This fourth rule deals with direct objects. In English, all of our sentences follow the structure “subject verb directObject”. For example, we would say “I ate it.” However in Spanish, whenever the direct object becomes generalized to a direct object pronoun such as “lo”, the sentence structure is altered. In Spanish, the order becomes “subject directObject verb”. Thus “I ate it” in Spanish becomes “Me lo comí” in order for us to be grammatically correct. 
+4. This fourth rule deals with direct objects. In English, all of our sentences follow the structure “subject verb directObject”. For example, we would say “I ate it.” However in Spanish, whenever the direct object becomes generalized to a direct object pronoun such as “lo”, the sentence structure is altered. In Spanish, the order becomes “subject directObject verb”. Thus “I ate it” in Spanish becomes “Me lo comí” in order for us to be grammatically correct. Then, whenever this rule sees the format “noun lo/la/los/las verb” in Spanish, it changes the order to “noun verb lo/la/los/las” for the English translation.
 5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found after a verb adjusted to swap positions with the verb. Example corrió rápidamente is adjusted to translate to ran quickly.
 6. This rule takes care of irregularities between sentences that use "de" in Spanish and their English counterparts. Sentences are reordered to make sense in English and the "de" is removed when we find nouns or noun phrases wrapped around a "de." For example "hablado de entonces" is rearranged to "then discussed."
 7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. This fixes sentences like "muchacho blanco y rubio" to "white and blond man."
 8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 
 9. Rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb.
-10.
+10. This final rule deals with the reflexive verb in Spanish. Unlike English, Spanish contains a whole subset of verbs whose unconjugated form is “verb+se” (ie. lavarse = to wash oneself, ducharse = to shower oneself, etc). For example, we would say “Yo me llamo Joey.” Directly translated to English, this would be “I I am called Joey”. However, normal English sentences do not contain the second “I”. Instead, the reflexive part is usually implicit. Thus our English translation should be simply “I am called Joey.” This rule then ignores the reflexive pronoun and simply skips the translation of that word.
 
 Error analysis:
 1. Missing Subject
@@ -78,7 +78,7 @@ In English, the word "other" is only pluralized when not followed by another nou
 
 Google Translate:
 Spanish or Castilian is an Iberian Romance language group.
-It is one of the six official UN languages​​.
+It is one of the six official UN languages.
 It is the second most spoken language in the world by the number of people who are native speakers, after Mandarin Chinese.
 It is also an official language in several major international political and economic organizations.
 It is spoken as a first and second language more than 450 million and more than 500 million people if you count those who have learned as a foreign language can be the third most spoken language by total speakers.
@@ -106,3 +106,4 @@ Members:
 Chloe built the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 
 Chloe, Tim, and Victoria each took 3-4 sentences of the spanish file and translated the words, storing it into dict.txt.
 Victoria wrote rules 1-4, Tim 5-7, and Chloe 8-10.
+

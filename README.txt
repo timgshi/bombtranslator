@@ -41,9 +41,9 @@ Rules:
 2.
 3.
 4.
-5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found two positions after a verb adjusted to swap positions with the verb.
-6. Swaps the order of words around the Spanish "de." In Spanish the possessive object comes before the subject and the order needs to be swapped to match the ordering of English. If the noun after the "de" is also followed by either a noun or adjective, both the third and fourth words are moved to be in front of the "de."
-7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. 
+5. Looks for adverbs to adjust their order according to the rules of English. Adverbs found after a verb adjusted to swap positions with the verb. Example corrió rápidamente is adjusted to translate to ran quickly.
+6. This rule takes care of irregularities between sentences that use "de" in Spanish and their English counterparts. Sentences are reordered to make sense in English and the "de" is removed when we find nouns or noun phrases wrapped around a "de." For example "hablado de entonces" is rearranged to "then discussed."
+7. Searches for words in a sequence of noun, adjective, conjunctive, adjective, then reorders them to adjective, conjunctive, adjective, noun. This fixes sentences like "muchacho blanco y rubio" to "white and blond man."
 8. Looks for intransitive verbs, which are verbs without a subject. The rule looks for intransitive verbs that are followed by a noun (proper/pronoun included). It will then switch this noun and verb form to follow english grammar of passive voice. 
 9. Rule looks for sentences without a subject by looking for verbs following punctuation. It then analyzes the form of the verb and its tense using regular expressions to determine the subject of the sentence. It replaces these words' Word.english in the arrays with the subject and verb.
 10.

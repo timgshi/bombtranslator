@@ -60,6 +60,16 @@ The Spanish or Castilian language is a [language romance] of Iberian group.
 
 Our translation did not catch that this phrase should actually be "romance language". However, it did switch "Iberian group." 
 
+3. Extra Subject
+Es la segunda lengua más hablada del mundo por el número de personas que la tienen como lengua materna, tras el chino mandarín.
+
+[It the] second is language more spoken of world by the to number of people It that the have as maternal language, after the Chinese mandarin.
+
+This sentence has extra subjects placed before articles. Our algorithm looks for verbs and inserts subjects if they're missing according to the tense of the verb. If however there is an article that preceeds the verb, the additional subject is added before the article "It the."
+
+
+
+
 Google Translate:
 Spanish or Castilian is an Iberian Romance language group.
 It is one of the six official UN languages​​.

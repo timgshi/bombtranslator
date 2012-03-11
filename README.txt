@@ -95,10 +95,12 @@ It is the second most spoken language in the world by the number of people who a
 
 The sentence structure of the placement of "by the number…speakers" makes the English translation difficult to comprehend upon first read. While the meaning can be deciphered, ie. it makes some sense, the sentence is not well structured. It appears, when comparing it to the original Spanish sentence, that Google directly translated this sentence as there appears no way to correctly rearrange the sentence without rearranging all of the sentence structure. (Ie. By the number of people who are native speakers, Spanish is the second most spoken language, after Mandarin, in the world.  
 
-2. Extra Subject
+2. Extra Article
 El español, como las otras lenguas romances , es una continuación moderna del latín hablado, desde el siglo III.
 
 The Spanish, like other Romance languages, is a modern continuation of spoken Latin, from the third century.
+
+This sentence contains an unnecessary article before the subject "Spanish" in "The Spanish." This is a difficult problem because Spanish can refer to both the language and the people. When referring to the Spaniards, Spanish should have a "The" before it. This could be improved by recognizing that the original "Español" refers to the language and ensuring that it is not preceded by an article.
 
 Members:
 Chloe built the starter code that reads a spanish file as well as a mobypos text file. Then, the code will build a dictionary that takes each spanish word in the file and stores the english translation. Finally, it will iterate through the spanish file and store an array with each element being of a class Word which stores the spanish word, english word, and the part of speech array. 

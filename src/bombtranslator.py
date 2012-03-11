@@ -130,7 +130,7 @@ def direct_object_verb_flip(english, position):
         if position < (len(english) - 2):
             direct_object = english[position + 1]
             verb = english[position + 2]
-            if direct_object.spanish == "lo" and 'V' in verb.pos:
+            if (direct_object.spanish == "lo" or direct_object.spanish == "la" or direct_object.spanish == "los" or direct_object.spanish == "las") and 'V' in verb.pos:
                 english[position + 1] = verb
                 english[position + 2] = direct_object
                 
